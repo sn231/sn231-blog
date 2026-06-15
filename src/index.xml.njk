@@ -1,0 +1,20 @@
+---
+permalink: /index.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+  <channel>
+    <title>{{ site.title | xmlEscape }}</title>
+    <link>{{ site.url }}/</link>
+    <description>{{ site.description | xmlEscape }}</description>
+    {% for post in collections.posts | limit(20) %}
+    <item>
+      <title>{{ post.data.title | xmlEscape }}</title>
+      <link>{{ site.url }}{{ post.url }}</link>
+      <pubDate>{{ post.date | xmlDate }}</pubDate>
+      <description>{{ post.data.description | xmlEscape }}</description>
+    </item>
+    {% endfor %}
+  </channel>
+</rss>

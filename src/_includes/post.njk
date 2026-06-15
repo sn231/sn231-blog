@@ -1,0 +1,21 @@
+---
+layout: base.njk
+---
+<article class="article">
+  <a class="back-link" href="/posts/">← 返回文章归档</a>
+  <p class="eyebrow">文章</p>
+  <h1>{{ title }}</h1>
+  <div class="article-meta">
+    <time datetime="{{ date | htmlDate }}">{{ date | readableDate }}</time>
+    {% if tags and tags.length %}
+      <span>·</span>
+      {% for tag in tags %}
+        <a class="mini-tag" href="/tags/#{{ tag | urlencode }}">{{ tag }}</a>
+      {% endfor %}
+    {% endif %}
+  </div>
+  {% if description %}<p class="lead">{{ description }}</p>{% endif %}
+  <div class="content">
+    {{ content | safe }}
+  </div>
+</article>

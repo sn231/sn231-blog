@@ -1,0 +1,29 @@
+---
+layout: base.njk
+title: 标签索引
+description: 所有标签和对应文章。
+permalink: /tags/index.html
+---
+<section class="archive-head">
+  <p class="eyebrow">全部标签</p>
+  <h1>标签索引</h1>
+  <p>标签会根据文章自动生成，适合整理小说、学习、随笔和折腾记录。</p>
+</section>
+
+{% set tags = collections.all | tagList %}
+<section class="tag-cloud">
+{% for tag in tags %}
+  <a href="#{{ tag | urlencode }}">{{ tag }}</a>
+{% endfor %}
+</section>
+
+<section class="tag-sections">
+{% for tag in tags %}
+  <div class="tag-section" id="{{ tag | urlencode }}">
+    <h2>{{ tag }}</h2>
+    {% for post in collections.posts | postsByTag(tag) %}
+      <a href="{{ post.url }}"><span>{{ post.date | readableDate }}</span>{{ post.data.title }}</a>
+    {% endfor %}
+  </div>
+{% endfor %}
+</section>

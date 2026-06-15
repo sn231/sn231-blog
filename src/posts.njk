@@ -1,0 +1,23 @@
+---
+layout: base.njk
+title: 文章归档
+description: 所有文章按时间倒序排列。
+permalink: /posts/index.html
+---
+<section class="archive-head">
+  <p class="eyebrow">全部文章</p>
+  <h1>文章归档</h1>
+  <p>所有内容按时间倒序排列。以后只需要往 <code>src/posts/</code> 里放 Markdown 文件，网站就会自动更新。</p>
+</section>
+
+<section class="archive-list">
+{% for post in collections.posts %}
+  <a class="archive-item" href="{{ post.url }}">
+    <time datetime="{{ post.date | htmlDate }}">{{ post.date | readableDate }}</time>
+    <div>
+      <h2>{{ post.data.title }}</h2>
+      <p>{{ post.data.description }}</p>
+    </div>
+  </a>
+{% endfor %}
+</section>

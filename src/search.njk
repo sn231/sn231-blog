@@ -1,0 +1,18 @@
+---
+layout: base.njk
+title: 搜索
+description: 搜索文章标题、摘要和标签。
+permalink: /search/index.html
+---
+<section class="archive-head">
+  <p class="eyebrow">站内搜索</p>
+  <h1>搜索文章</h1>
+  <p>输入关键词，搜索标题、摘要和标签。</p>
+</section>
+
+<div class="search-box">
+  <input id="searchInput" type="search" placeholder="比如：仙逆、学习、建站" autocomplete="off">
+</div>
+<section id="searchResults" class="archive-list"></section>
+
+<script src="/assets/search.js"></script>

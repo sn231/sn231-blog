@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if title %}{{ title }} · {% endif %}{{ site.title }}</title>
+  <meta name="description" content="{{ description or site.description }}">
+  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="/index.xml">
+  <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+  <div class="site-noise" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="回到首页">
+      <span class="brand-mark">S</span>
+      <span>{{ site.title }}</span>
+    </a>
+    <nav class="nav" aria-label="主导航">
+      <a href="/">首页</a>
+      <a href="/posts/">文章</a>
+      <a href="/tags/">标签</a>
+      <a href="/search/">搜索</a>
+      <a href="/about/">关于</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    {{ content | safe }}
+  </main>
+
+  <footer class="footer">
+    <span>慢慢写，慢慢攒。</span>
+    <span>由 Eleventy 和 Vercel 驱动。</span>
+  </footer>
+</body>
+</html>

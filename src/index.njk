@@ -1,0 +1,43 @@
+---
+layout: base.njk
+title: 首页
+description: 小说资料、学习经验、折腾记录和随手文章，都放在这里。
+---
+<section class="hero">
+  <div class="hero-copy">
+    <p class="eyebrow">个人文章库</p>
+    <h1>写小说，也写生活；<br>写经验，也写乱七八糟的想法。</h1>
+    <p class="hero-text">这里不是单一主题博客，而是一个长期积累的个人文章库。仙逆资料、学习经验、建站折腾、随手随笔，都可以放在这里。</p>
+    <div class="hero-actions">
+      <a class="button" href="/posts/">查看全部文章</a>
+      <a class="button ghost" href="/search/">搜索内容</a>
+    </div>
+  </div>
+  <aside class="hero-card">
+    <div><span class="stat">{{ collections.posts.length }}</span><span>篇文章</span></div>
+    <div><span class="stat">{{ collections.all | tagList | length }}</span><span>个标签</span></div>
+    <div><span class="stat">∞</span><span>持续更新</span></div>
+  </aside>
+</section>
+
+<section class="section-head">
+  <h2>最新文章</h2>
+  <a href="/posts/">查看全部</a>
+</section>
+
+<section class="post-grid">
+{% for post in collections.posts | limit(6) %}
+  <a class="post-card" href="{{ post.url }}">
+    <time datetime="{{ post.date | htmlDate }}">{{ post.date | readableDate }}</time>
+    <h3>{{ post.data.title }}</h3>
+    <p>{{ post.data.description }}</p>
+    <span>阅读全文 →</span>
+  </a>
+{% endfor %}
+</section>
+
+<section class="feature-row">
+  <div class="feature"><b>小说资料</b><span>人物、境界、剧情节点，随时补充。</span></div>
+  <div class="feature"><b>学习经验</b><span>方法、复盘、成长记录，留给以后回看。</span></div>
+  <div class="feature"><b>折腾笔记</b><span>建站、工具、技术试验，不再丢三落四。</span></div>
+</section>
